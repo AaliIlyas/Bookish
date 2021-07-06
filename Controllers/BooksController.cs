@@ -24,6 +24,5 @@ namespace Bookish.Controllers
             books.Name = "Dune"; 
             return View(books);
         }
-       
     }
 }
