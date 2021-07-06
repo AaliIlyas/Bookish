@@ -1,4 +1,8 @@
-@model BooksViewModel;
+@model IList<BooksViewModel>;
 
-<p>This is a book </p>
-<p> Author: @Model.Author, Title: @Model.Title, ID: @Model.Id, Genre: @Model.Genre, Number of Copies: @Model.NumberOfCopies</p>
+<h1>Books</h1>
+
+@foreach (var book in Model)
+{
+    <p>@book.Author, Title: @book.Title, ID: @book.Id, Genre: @book.Genre, Number of Copies: @book.NumberOfCopies</p>
+}

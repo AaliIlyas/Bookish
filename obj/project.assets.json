@@ -7263,19 +7263,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\creche\\.nuget\\packages\\": {}
+    "C:\\Users\\ilyali\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Training\\Bookish\\Bookish.csproj",
+      "projectUniqueName": "C:\\Training\\Bookish\\bookish1\\Bookish.csproj",
       "projectName": "Bookish",
-      "projectPath": "C:\\Training\\Bookish\\Bookish.csproj",
-      "packagesPath": "C:\\Users\\creche\\.nuget\\packages\\",
-      "outputPath": "C:\\Training\\Bookish\\obj\\",
+      "projectPath": "C:\\Training\\Bookish\\bookish1\\Bookish.csproj",
+      "packagesPath": "C:\\Users\\ilyali\\.nuget\\packages\\",
+      "outputPath": "C:\\Training\\Bookish\\bookish1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\creche\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ilyali\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
