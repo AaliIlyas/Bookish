@@ -20,9 +20,13 @@ namespace Bookish.Controllers
 
         public IActionResult booksdb()
         {
-            var books = new BooksViewModel();
-            books.Name = "Dune"; 
-            return View(books);
+            var dune = new BooksViewModel();
+            dune.Title = "Dune";
+            dune.Author = "Frank Herbert";
+            dune.NumberOfCopies = 3;
+            dune.Genre = "Sci-Fi";
+            dune.Id = 1;
+            return View(dune);
         }
     }
 }
