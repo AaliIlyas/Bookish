@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bookish.Models
+namespace Bookish.DbModels
 {
-    public class LibraryMember
+    public class MemberDbModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

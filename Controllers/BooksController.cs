@@ -20,7 +20,7 @@ namespace Bookish.Controllers
 
         public IActionResult All()
         {
-            var dune = new BooksViewModel
+            var dune = new BookViewModel
             {
                 Title = "Dune",
                 Author = "Frank Herbert",
@@ -29,7 +29,7 @@ namespace Bookish.Controllers
                 Id = 1
             };
 
-            var emma = new BooksViewModel
+            var emma = new BookViewModel
             {
                 Title = "Emma",
                 Author = "Jane Austen",
@@ -38,7 +38,7 @@ namespace Bookish.Controllers
                 Id = 2
             };
 
-            var oliverTwist = new BooksViewModel
+            var oliverTwist = new BookViewModel
             {
                 Title = "Oliver Twist",
                 Author = "Charles Dickens",
@@ -47,7 +47,7 @@ namespace Bookish.Controllers
                 Id = 3
             };
 
-            var theVeryHungryCaterpillar = new BooksViewModel
+            var theVeryHungryCaterpillar = new BookViewModel
             {
                 Title = "The Very Hungry Caterpillar",
                 Author = "Eric Carle",
@@ -56,7 +56,7 @@ namespace Bookish.Controllers
                 Id = 4
             };
 
-            var capital = new BooksViewModel
+            var capital = new BookViewModel
             {
                 Title = "Capital",
                 Author = "Karl Marx",
@@ -65,7 +65,7 @@ namespace Bookish.Controllers
                 Id = 5
             };
 
-            var ofMiceAndMen = new BooksViewModel
+            var ofMiceAndMen = new BookViewModel
             {
                 Title = "Of Mice and Men",
                 Author = "John Steinbeck",
@@ -74,7 +74,7 @@ namespace Bookish.Controllers
                 Id = 6
             };
 
-            var bookList = new List<BooksViewModel>() { dune, emma, oliverTwist, theVeryHungryCaterpillar, capital, ofMiceAndMen };
+            var bookList = new List<BookViewModel> { dune, emma, oliverTwist, theVeryHungryCaterpillar, capital, ofMiceAndMen };
 
             return View(bookList);
         }

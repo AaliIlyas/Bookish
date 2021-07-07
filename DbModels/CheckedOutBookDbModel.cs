@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bookish.Models
+namespace Bookish.DbModels
 {
-    public class CheckedOutBooks
+    public class CheckedOutBookDbModel
     {
-        public int Name_Id { get; set; }
-        public int Book_Id { get; set; }
+        public MemberDbModel Member { get; set; }
+        public BookDbModel Book { get; set; }
         public int Id { get; set; }
         public DateTime DateLoaned { get; set; }
         public DateTime DateDue { get; set; }
-        public DateTime DateReturned { get; set; }
+        public DateTime? DateReturned { get; set; }
     }
 }

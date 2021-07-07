@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookish.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20210707102746_Library")]
-    partial class Library
+    [Migration("20210707130143_UpdatedLibraryDb")]
+    partial class UpdatedLibraryDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Bookish.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Bookish.Models.BooksViewModel", b =>
+            modelBuilder.Entity("Bookish.DbModels.BookDbModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,17 +42,17 @@ namespace Bookish.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BooksViewModel");
+                    b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Bookish.Models.CheckedOutBooks", b =>
+            modelBuilder.Entity("Bookish.DbModels.CheckedOutBookDbModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Book_Id")
+                    b.Property<int?>("BookId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateDue")
@@ -61,18 +61,22 @@ namespace Bookish.Migrations
                     b.Property<DateTime>("DateLoaned")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateReturned")
+                    b.Property<DateTime?>("DateReturned")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name_Id")
+                    b.Property<int?>("MemberId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("MemberId");
+
                     b.ToTable("CheckedOutBooks");
                 });
 
-            modelBuilder.Entity("Bookish.Models.LibraryMember", b =>
+            modelBuilder.Entity("Bookish.DbModels.MemberDbModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +94,27 @@ namespace Bookish.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LibraryMember");
+                    b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("Bookish.DbModels.CheckedOutBookDbModel", b =>
+                {
+                    b.HasOne("Bookish.DbModels.BookDbModel", "Book")
+                        .WithMany("CheckedOutBooks")
+                        .HasForeignKey("BookId");
+
+                    b.HasOne("Bookish.DbModels.MemberDbModel", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId");
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Member");
+                });
+
+            modelBuilder.Entity("Bookish.DbModels.BookDbModel", b =>
+                {
+                    b.Navigation("CheckedOutBooks");
                 });
 #pragma warning restore 612, 618
         }

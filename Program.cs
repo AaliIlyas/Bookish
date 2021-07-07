@@ -15,7 +15,6 @@ namespace Bookish
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            MainDB.MainDatabase();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
