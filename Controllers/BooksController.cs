@@ -18,7 +18,7 @@ namespace Bookish.Controllers
             _logger = logger;
         }
 
-        public IActionResult Booksdb()
+        public IActionResult All()
         {
             var dune = new BooksViewModel
             {
