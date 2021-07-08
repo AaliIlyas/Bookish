@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bookish.Models;
 using Bookish.DbModels;
+using Bookish.Services;
 
 namespace Bookish.Controllers
 {
@@ -21,24 +22,10 @@ namespace Bookish.Controllers
 
         public IActionResult All()
         {
-            var context = new LibraryContext();
-            var booksTable = context.Books.Select(book => ConvertToBookViewModel(book)).ToList();
-
+            var booksTable = BookService.GenerateBookList();
             return View(booksTable);
         }
+        
 
-        public static BookViewModel ConvertToBookViewModel(BookDbModel book)
-        {
-            var bookToView = new BookViewModel
-            {
-                Author = book.Author,
-                Title = book.Title,
-                Id = book.Id,
-                Genre = book.Genre,
-                NumberOfCopies = book.NumberOfCopies
-            };
-
-            return bookToView;
-        }
     }
 }
