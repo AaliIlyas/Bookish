@@ -1,0 +1,8 @@
+﻿@model IList<MemberViewModel>;
+
+<h1>Members</h1>
+
+@foreach (var member in Model)
+{
+    <p>@member.Id, Name: @member.Name, Address: @member.Address, Phone Number: @member.PhoneNumber</p>
+}

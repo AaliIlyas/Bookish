@@ -148,3 +148,4 @@ C:\Training\Bookish\bookish1\obj\Debug\net5.0\Razor\Views\books\All.cshtml.g.cs
 C:\Training\Bookish\bin\Debug\net5.0\Humanizer.dll
 C:\Training\Bookish\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Training\Bookish\obj\Debug\net5.0\Razor\Views\books\All.cshtml.g.cs
+C:\Training\Bookish\bookish1\obj\Debug\net5.0\Razor\Views\members\All.cshtml.g.cs
