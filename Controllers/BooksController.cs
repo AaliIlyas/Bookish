@@ -13,19 +13,17 @@ namespace Bookish.Controllers
 {
     public class BooksController : Controller
     {
-        private readonly ILogger<BooksController> _logger;
+        private readonly IBookService _bookService;
 
-        public BooksController(ILogger<BooksController> logger)
+        public BooksController(IBookService bookService)
         {
-            _logger = logger;
+            _bookService = bookService;
         }
 
         public IActionResult All()
         {
-            var booksTable = BookService.GenerateBookList();
+            var booksTable = _bookService.GenerateBookList();
             return View(booksTable);
         }
-        
-
     }
 }

@@ -8,13 +8,12 @@ namespace Bookish.DbModels
 {
     public class LibraryContext : DbContext
     {
+        public LibraryContext(DbContextOptions<LibraryContext> options) : base(options)
+        {
+        }
+
         public DbSet<BookDbModel> Books { get; set; }
         public DbSet<CheckedOutBookDbModel> CheckedOutBooks { get; set; }
         public DbSet<MemberDbModel> Members { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=BookishDB;User Id=sa;Password=Password123;");
-        }
     }
 }

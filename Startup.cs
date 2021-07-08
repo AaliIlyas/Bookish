@@ -1,3 +1,4 @@
+using Bookish.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Bookish.DbModels;
 
 namespace Bookish
 {
@@ -24,6 +27,13 @@ namespace Bookish
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IMemberService, MemberService>();
+            services.AddTransient<IBookService, BookService>();
+            services.AddTransient<ICheckoutService, CheckoutService>();
+
+            services.AddDbContext<LibraryContext>(
+                options => options.UseSqlServer(@"Server=localhost,1433;Database=BookishDB;User Id=sa;Password=Password123;")
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

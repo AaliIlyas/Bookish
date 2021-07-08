@@ -13,16 +13,16 @@ namespace Bookish.Controllers
 {
     public class MembersController : Controller
     {
-        private readonly ILogger<MembersController> _logger;
+        private readonly IMemberService _memberService;
 
-        public MembersController(ILogger<MembersController> logger)
+        public MembersController(IMemberService memberService)
         {
-            _logger = logger;
+            _memberService = memberService;
         }
 
         public IActionResult All()
         {
-            var membersTable = MemberService.GenerateMemberList();
+            var membersTable = _memberService.GenerateMemberList();
 
             return View(membersTable);
         }

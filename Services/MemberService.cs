@@ -7,27 +7,25 @@ using System.Threading.Tasks;
 
 namespace Bookish.Services
 {
-    public class MemberService
+    public interface IMemberService
     {
-        public static List<MemberViewModel> GenerateMemberList()
-        {
-            var context = new LibraryContext();
-            var membersTable = context.Members.Select(member => ConvertToMemberViewModel(member)).ToList();
+        List<MemberViewModel> GenerateMemberList();
+    }
 
-            return membersTable;
+    public class MemberService : IMemberService
+    {
+        private readonly LibraryContext _context;
+
+        public MemberService(LibraryContext context)
+        {
+            _context = context;
         }
 
-        public static MemberViewModel ConvertToMemberViewModel(MemberDbModel member)
+        public List<MemberViewModel> GenerateMemberList()
         {
-            var memberToView = new MemberViewModel
-            {
-                Id = member.Id,
-                Name = member.Name,
-                Address = member.Address,
-                PhoneNumber = member.PhoneNumber,
-            };
+            var membersTable = _context.Members.Select(member => new MemberViewModel(member)).ToList();
 
-            return memberToView;
+            return membersTable;
         }
     }
 }
