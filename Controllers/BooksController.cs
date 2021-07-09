@@ -20,23 +20,24 @@ namespace Bookish.Controllers
             _bookService = bookService;
         }
 
+        [HttpGet]
         public IActionResult All()
         {
             var booksTable = _bookService.GenerateBookList();
             return View(booksTable);
         }
 
+        [HttpGet]
         public IActionResult New()
         {
-
             return View();
         }
 
         [HttpPost]
-        public string Submit(string Title, string Author, string Genre, int Num)
+        public IActionResult Submit(NewBookViewModel newBookViewModel)
         {
-            _bookService.AddNewBook(Title, Author, Genre, Num);
-            return $"{Title}, {Author}, {Genre}, {Num} copies. Thanks for submitting your book.";
+            _bookService.AddNewBook(newBookViewModel);
+            return RedirectToAction(nameof(All)); //$"{Title}, {Author}, {Genre}, {Num} copies. Thanks for submitting your book.";
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Bookish.Services
     public interface IBookService
     {
         List<BookViewModel> GenerateBookList();
-        void AddNewBook(string title, string author, string genre, int num);
+        void AddNewBook(NewBookViewModel newBookViewModel);
     }
 
     public class BookService : IBookService
@@ -29,14 +29,14 @@ namespace Bookish.Services
             return booksTable;
         }
 
-        public void AddNewBook(string title, string author, string genre, int num)
+        public void AddNewBook(NewBookViewModel newBookViewModel)
         {
             var newBook = new BookDbModel
             {
-                Author = author,
-                Title = title,
-                Genre = genre,
-                NumberOfCopies = num
+                Author = newBookViewModel.Author,
+                Title = newBookViewModel.Title,
+                Genre = newBookViewModel.Genre,
+                NumberOfCopies = newBookViewModel.NumberOfCopies
             };
 
             _context.Books.Add(newBook);

@@ -1,20 +1,19 @@
-﻿@model IList<BookViewModel>;
+﻿@model NewBookViewModel
 
 <h1>Add a new book</h1>
 
-@using (Html.BeginForm("Submit", "Books"))
-{
+<form method="post" asp-controller="Books" asp-action="Submit">
     <p>Book title</p>
-    <input type="text" name="Title" alt="Book Title" required="required">
+    <input type="text" asp-for="Title" alt="Book Title" required="required">
 
     <p>Author</p>
-    <input type="text" name="Author" alt="Author" required="required">
+    <input type="text" asp-for="Author" alt="Author" required="required">
 
     <p>Genre</p>
-    <input type="text" name="Genre" alt="Genre" required="required">
+    <input type="text" asp-for="Genre" alt="Genre" required="required">
 
     <p>Number of Copies</p>
-    <input type="number" name="Num" alt="Genre" required="required">
+    <input type="number" asp-for="NumberOfCopies" alt="Number of Copies" required="required">
 
     <button type="submit">Add Book</button>
-}
+</form>
