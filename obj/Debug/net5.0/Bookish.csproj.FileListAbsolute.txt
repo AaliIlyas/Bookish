@@ -152,3 +152,4 @@ C:\Training\Bookish\bookish1\obj\Debug\net5.0\Razor\Views\members\All.cshtml.g.c
 C:\Training\Bookish\obj\Debug\net5.0\Razor\Views\members\All.cshtml.g.cs
 C:\Training\Bookish\bookish1\obj\Debug\net5.0\Razor\Views\Checkout\All.cshtml.g.cs
 C:\Training\Bookish\obj\Debug\net5.0\Razor\Views\Checkout\All.cshtml.g.cs
+C:\Training\Bookish\bookish1\obj\Debug\net5.0\Razor\Views\books\New.cshtml.g.cs

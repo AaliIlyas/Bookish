@@ -1,0 +1,20 @@
+﻿@model IList<BookViewModel>;
+
+<h1>Add a new book</h1>
+
+@using (Html.BeginForm("Submit", "Books"))
+{
+    <p>Book title</p>
+    <input type="text" name="Title" alt="Book Title" required="required">
+
+    <p>Author</p>
+    <input type="text" name="Author" alt="Author" required="required">
+
+    <p>Genre</p>
+    <input type="text" name="Genre" alt="Genre" required="required">
+
+    <p>Number of Copies</p>
+    <input type="number" name="Num" alt="Genre" required="required">
+
+    <button type="submit">Add Book</button>
+}

@@ -27,5 +27,10 @@ namespace Bookish.Services
 
             return booksTable;
         }
+
+        public void AddNewBook()
+        {
+
+        }
     }
 }

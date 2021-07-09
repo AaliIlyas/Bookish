@@ -3,7 +3,6 @@
     var booksOnLoan = Model.Where(checkout => !checkout.DateReturned.HasValue);
 }
 
-
 <h1>History of books on loan</h1>
 
 @foreach (var checkout in Model)
@@ -18,5 +17,3 @@
 {
     <p>@checkout.Book.Title by @checkout.Book.Author, loaned to @checkout.Member.Name, from: @checkout.DateLoaned.ToString("dd/MM/yyyy"), until: @checkout.DateDue.ToString("dd/MM/yyyy") </p>
 }
-
-

@@ -25,5 +25,18 @@ namespace Bookish.Controllers
             var booksTable = _bookService.GenerateBookList();
             return View(booksTable);
         }
+
+        public IActionResult New()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public string Submit(string Title, string Author, string Genre, int Num)
+        {
+            // goes to service to add to db
+            return $"{Title}, {Author}, {Genre}, {Num} copies. Thanks for submitting your book.";
+        }
     }
 }
