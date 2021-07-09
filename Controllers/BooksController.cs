@@ -35,7 +35,7 @@ namespace Bookish.Controllers
         [HttpPost]
         public string Submit(string Title, string Author, string Genre, int Num)
         {
-            // goes to service to add to db
+            _bookService.AddNewBook(Title, Author, Genre, Num);
             return $"{Title}, {Author}, {Genre}, {Num} copies. Thanks for submitting your book.";
         }
     }
