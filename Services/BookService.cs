@@ -11,13 +11,15 @@ namespace Bookish.Services
     {
         List<BookViewModel> GenerateBookList();
         void AddNewBook(NewBookViewModel newBookViewModel);
+        public BookViewModel GetIndividualBook(int id);
+        public void EditBook(BookViewModel BookViewModel);
     }
 
     public class BookService : IBookService
     {
         private readonly LibraryContext _context;
 
-        public BookService (LibraryContext context)
+        public BookService(LibraryContext context)
         {
             _context = context;
         }
@@ -41,6 +43,40 @@ namespace Bookish.Services
 
             _context.Books.Add(newBook);
             _context.SaveChanges();
+        }
+
+        public void EditBook(BookViewModel bookViewModel)
+        {
+            var book = _context.Books.Find(bookViewModel.Id);
+
+            if (bookViewModel.Title != null)
+            {
+                book.Title = bookViewModel.Title;
+            }
+
+            if (bookViewModel.Author != null)
+            {
+                book.Author = bookViewModel.Author;
+            }
+
+            if (bookViewModel.NumberOfCopies != 0)
+            {
+                book.NumberOfCopies = bookViewModel.NumberOfCopies;
+            }
+
+            if (bookViewModel.Genre != null)
+            {
+                book.Genre = bookViewModel.Genre;
+            }
+
+            _context.SaveChanges();
+        }
+
+        public BookViewModel GetIndividualBook(int id)
+        {
+            var book = _context.Books.Where(book => book.Id == id)
+                                 .Select(book => new BookViewModel(book));
+            return book.First();
         }
     }
 }

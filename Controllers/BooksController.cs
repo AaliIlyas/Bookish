@@ -33,11 +33,25 @@ namespace Bookish.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult BookPage(int id)
+        {
+            var book = _bookService.GetIndividualBook(id);
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult SubmitEdit(BookViewModel bookViewModel)
+        {
+            _bookService.EditBook(bookViewModel);
+            return RedirectToAction(nameof(All));
+        }
+
         [HttpPost]
         public IActionResult Submit(NewBookViewModel newBookViewModel)
         {
             _bookService.AddNewBook(newBookViewModel);
-            return RedirectToAction(nameof(All)); //$"{Title}, {Author}, {Genre}, {Num} copies. Thanks for submitting your book.";
+            return RedirectToAction(nameof(All));
         }
     }
 }

@@ -1,0 +1,23 @@
+﻿@model BookViewModel;
+
+<p>This is the book Page</p>
+
+<p>Book: @Model.Title, Author: @Model.Author, Genre: @Model.Genre, Number of copies: @Model.NumberOfCopies, Id: @Model.Id</p>
+
+<form method="post" asp-controller="Books" asp-action="SubmitEdit">
+    <p>Book title</p>
+    <input type="text" asp-for="Title" alt="Book Title" required="required">
+
+    <p>Author</p>
+    <input type="text" asp-for="Author" alt="Author" required="required">
+
+    <p>Genre</p>
+    <input type="text" asp-for="Genre" alt="Genre" required="required">
+
+    <p>Number of Copies</p>
+    <input type="number" asp-for="NumberOfCopies" alt="Number of Copies" required="required">
+
+    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden" />
+
+    <button type="submit">Edit Book</button>
+</form>
