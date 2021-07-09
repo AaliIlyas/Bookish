@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Bookish.Models;
-using Bookish.DbModels;
 using Bookish.Services;
 
 namespace Bookish.Controllers
@@ -38,6 +31,13 @@ namespace Bookish.Controllers
         {
             var book = _bookService.GetIndividualBook(id);
             return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteBook(BookViewModel bookViewModel)
+        {
+            _bookService.DeleteBook(bookViewModel);
+            return RedirectToAction(nameof(All));
         }
 
         [HttpPost]

@@ -21,3 +21,11 @@
 
     <button type="submit">Edit Book</button>
 </form>
+
+<form method="post" asp-controller="Books" asp-action="DeleteBook">
+    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden"/>
+    <br />
+    <h4>Delete book? (Warning: permanent)</h4>
+    <br />
+    <button type="submit">DELETE BOOK</button>
+</form>

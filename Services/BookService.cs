@@ -13,6 +13,7 @@ namespace Bookish.Services
         void AddNewBook(NewBookViewModel newBookViewModel);
         public BookViewModel GetIndividualBook(int id);
         public void EditBook(BookViewModel BookViewModel);
+        public void DeleteBook(BookViewModel bookViewModel);
     }
 
     public class BookService : IBookService
@@ -49,34 +50,27 @@ namespace Bookish.Services
         {
             var book = _context.Books.Find(bookViewModel.Id);
 
-            if (bookViewModel.Title != null)
-            {
                 book.Title = bookViewModel.Title;
-            }
-
-            if (bookViewModel.Author != null)
-            {
                 book.Author = bookViewModel.Author;
-            }
-
-            if (bookViewModel.NumberOfCopies != 0)
-            {
                 book.NumberOfCopies = bookViewModel.NumberOfCopies;
-            }
-
-            if (bookViewModel.Genre != null)
-            {
                 book.Genre = bookViewModel.Genre;
-            }
 
+            _context.SaveChanges();
+        }
+
+        public void DeleteBook (BookViewModel bookViewModel)
+        {
+            var book = _context.Books.Find(bookViewModel.Id);
+            _context.Books.Remove(book);
             _context.SaveChanges();
         }
 
         public BookViewModel GetIndividualBook(int id)
         {
-            var book = _context.Books.Where(book => book.Id == id)
-                                 .Select(book => new BookViewModel(book));
-            return book.First();
+            var DbBook = _context.Books.Find(id);
+            var book = new BookViewModel(DbBook);
+
+            return book;
         }
     }
 }
