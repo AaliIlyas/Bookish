@@ -1,0 +1,21 @@
+﻿@model NewCheckoutViewModel;
+
+<h1>Checkout new book</h1>
+
+<form method="post" asp-controller="Checkout" asp-action="NewCheckout">
+    <p>Member Name</p>
+    <input type="text" asp-for="MemberName" alt="Book Title" required="required">
+
+    <p>Book Name</p>
+    <input type="text" asp-for="BookName" alt="Author" required="required">
+
+    <p>Date Loaned</p>
+    <input type="datetime-local" asp-for="DateLoaned" alt="Genre" required="required">
+
+    <p>Date Due</p>
+    <input type="datetime-local" asp-for="DateDue" alt="Number of Copies" required="required">
+
+    <button type="submit">Checkout this book</button>
+</form>
+
+<a href="/checkout/all">Go back</a>

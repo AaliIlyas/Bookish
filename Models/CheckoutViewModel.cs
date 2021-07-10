@@ -8,6 +8,21 @@ namespace Bookish.Models
 {
     public class CheckoutViewModel
     {
+        public CheckoutViewModel()
+        {
+        }
+
+        public CheckoutViewModel(CheckedOutBookDbModel checkedOutBookDbModel)
+        {
+            Member = new MemberViewModel(checkedOutBookDbModel.Member);
+            Book = new BookViewModel(checkedOutBookDbModel.Book);
+            Author = Book.Author;
+            Id = checkedOutBookDbModel.Id;
+            DateLoaned = checkedOutBookDbModel.DateLoaned;
+            DateDue = checkedOutBookDbModel.DateDue;
+            DateReturned = checkedOutBookDbModel.DateReturned;
+        }
+
         public MemberViewModel Member { get; set; }
         public BookViewModel Book { get; set; }
         public string Author { get; set; }

@@ -1,0 +1,41 @@
+﻿@model SingleCheckoutViewModel;
+
+<h3>Check out</h3>
+
+<p>Member: @Model.MemberName, Book: @Model.BookTitle by @Model.Author</p>
+<p>Date Loaned: @Model.DateLoaned.ToString("dd/MM/yyyy"), Date Due: @Model.DateDue.ToString("dd/MM/yyyy")</p>
+@{var returnDate = (Model.DateReturned != null) ? Model.DateReturned?.ToString("dd/MM/yyyy") : "Unreturned"; }
+<p>Id: @Model.Id, Date Returned: @returnDate</p>
+
+<form method="post" asp-controller="Checkout" asp-action="SubmitEdit">
+    <p>Member Name</p>
+    <input type="text" asp-for="MemberName" required="required">
+
+    <p>Book Title</p>
+    <input type="text" asp-for="BookTitle" required="required">
+
+    <p>Date Loaned</p>
+    <input type="datetime-local" asp-for="DateLoaned" required="required">
+
+    <p>Date Due</p>
+    <input type="datetime-local" asp-for="DateDue" required="required">
+
+    <p>Date returned</p>
+    <input type="datetime-local" asp-for="DateReturned">
+
+    <input asp-for="Author" value="@Model.Author" alt="Id" type="hidden" />
+    <input asp-for="Id" value="@Model.Id" alt="Author" type="hidden" />
+
+    <button type="submit">Submit Edit</button>
+</form>
+
+<br />
+<form method="post" asp-controller="Checkout" asp-action="DeleteEntry">
+    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden" />
+    <br />
+    <h4>Delete this Entry? (Warning: permanent)</h4>
+    <br />
+    <button type="submit">DELETE</button>
+</form>
+
+<a href="/checkout/all">Go back</a>
