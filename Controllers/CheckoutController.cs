@@ -1,13 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using Bookish.Models;
-using Bookish.DbModels;
+﻿using Bookish.Models;
 using Bookish.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bookish.Controllers
 {
