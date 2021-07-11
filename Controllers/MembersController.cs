@@ -15,7 +15,6 @@ namespace Bookish.Controllers
         public IActionResult All()
         {
             var membersTable = _memberService.GenerateMemberList();
-
             return View(membersTable);
         }
     }

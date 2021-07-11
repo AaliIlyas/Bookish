@@ -26,7 +26,6 @@ namespace Bookish.Services
         public List<BookViewModel> GenerateBookList()
         {
             var booksTable = _context.Books.Select(book => new BookViewModel(book)).ToList();
-
             return booksTable;
         }
 
@@ -67,7 +66,6 @@ namespace Bookish.Services
         {
             var DbBook = _context.Books.Find(id);
             var book = new BookViewModel(DbBook);
-
             return book;
         }
     }
