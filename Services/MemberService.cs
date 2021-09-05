@@ -8,6 +8,10 @@ namespace Bookish.Services
     public interface IMemberService
     {
         List<MemberViewModel> GenerateMemberList();
+        void AddNewMember(MemberRequestModel newMember);
+        MemberViewModel GetIndividualMember(int id);
+        void EditMember(MemberViewModel member);
+        void Delete(int id);
     }
 
     public class MemberService : IMemberService
@@ -24,6 +28,43 @@ namespace Bookish.Services
             var membersTable = _context.Members.Select(member => new MemberViewModel(member)).ToList();
 
             return membersTable;
+        }
+
+        public MemberViewModel GetIndividualMember(int id)
+        {
+            var member = _context.Members.Single(m => m.Id == id);
+            return new MemberViewModel(member);
+        }
+
+        public void AddNewMember(MemberRequestModel newMember)
+        {
+            var member = new MemberDbModel
+            {
+                Name = newMember.Name,
+                Address = newMember.Address,
+                PhoneNumber = newMember.PhoneNumber
+            };
+
+            _context.Members.Add(member);
+            _context.SaveChanges();
+        }
+
+        public void EditMember(MemberViewModel memberViewModel)
+        {
+            var member = _context.Members.Single(m => m.Id == memberViewModel.Id);
+
+            member.Name = memberViewModel.Name;
+            member.Address = memberViewModel.Address;
+            member.PhoneNumber = memberViewModel.PhoneNumber;
+
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var member = _context.Members.Find(id);
+            _context.Members.Remove(member);
+            _context.SaveChanges();
         }
     }
 }

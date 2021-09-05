@@ -1,0 +1,30 @@
+﻿@model MemberViewModel;
+
+<p>This is the Members Page</p>
+
+<p>Member Name: @Model.Name, Address: @Model.Address, Phone Number: @Model.PhoneNumber.ToString(), Id: @Model.Id</p>
+
+<form method="post" asp-controller="Members" asp-action="ModifyMember">
+    <p>Name</p>
+    <input type="text" asp-for="Name" alt="Name" required="required">
+
+    <p>Address</p>
+    <input type="text" asp-for="Address" alt="Address" required="required">
+
+    <p>Phone Number</p>
+    <input type="number" asp-for="PhoneNumber" alt="PhoneNumber" required="required">
+
+    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden" />
+
+    <button type="submit">Edit Member</button>
+</form>
+
+<form method="post" asp-controller="Members" asp-action="Delete">
+    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden"/>
+    <br />
+    <h4>Delete member? (Warning: permanent)</h4>
+    <br />
+    <button type="submit">DELETE MEMBER</button>
+</form>
+
+<a href="/members/all">Go back</a>

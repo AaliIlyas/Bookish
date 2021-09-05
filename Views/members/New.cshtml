@@ -1,0 +1,18 @@
+﻿@model MemberRequestModel;
+
+<h1>Create New Member</h1>
+
+<form method="post" asp-controller="Members" asp-action="Create">
+    <p>Name</p>
+    <input type="text" asp-for="Name" alt="Book Title" required="required">
+
+    <p>Address</p>
+    <input type="text" asp-for="Address" alt="Author" required="required">
+
+    <p>Phone Number</p>
+    <input type="number" asp-for="PhoneNumber" alt="Genre" required="required">
+
+    <button type="submit">Create New Membership</button>
+</form>
+
+<a href="/members/all">Go back</a>

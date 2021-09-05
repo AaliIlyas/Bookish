@@ -47,15 +47,15 @@ namespace Bookish.Services
         {
             var book = _context.Books.Find(bookViewModel.Id);
 
-                book.Title = bookViewModel.Title;
-                book.Author = bookViewModel.Author;
-                book.NumberOfCopies = bookViewModel.NumberOfCopies;
-                book.Genre = bookViewModel.Genre;
+            book.Title = bookViewModel.Title;
+            book.Author = bookViewModel.Author;
+            book.NumberOfCopies = bookViewModel.NumberOfCopies;
+            book.Genre = bookViewModel.Genre;
 
             _context.SaveChanges();
         }
 
-        public void DeleteBook (BookViewModel bookViewModel)
+        public void DeleteBook(BookViewModel bookViewModel)
         {
             var book = _context.Books.Find(bookViewModel.Id);
             _context.Books.Remove(book);

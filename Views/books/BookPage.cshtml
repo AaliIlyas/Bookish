@@ -4,6 +4,7 @@
 
 <p>Book: @Model.Title, Author: @Model.Author, Genre: @Model.Genre, Number of copies: @Model.NumberOfCopies, Id: @Model.Id</p>
 
+
 <form method="post" asp-controller="Books" asp-action="SubmitEdit">
     <p>Book title</p>
     <input type="text" asp-for="Title" alt="Book Title" required="required">

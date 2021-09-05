@@ -5,4 +5,8 @@
 @foreach (var member in Model)
 {
     <p>@member.Id, Name: @member.Name, Address: @member.Address, Phone Number: @member.PhoneNumber</p>
+    <a href="/members/memberpage/@member.Id"><button>Edit this Member</button></a>
 }
+
+<br/>
+<a href="/members/New"><button>Add new Member</button></a>
