@@ -2,11 +2,34 @@
 
 <h1>Books</h1>
 
-@foreach (var book in Model)
+@*@foreach (var book in Model)
 {
     <p>@book.Author, Title: @book.Title, ID: @book.Id, Genre: @book.Genre, Number of Copies: @book.NumberOfCopies</p>
-    <a href="/books/bookpage/@book.Id"><button>Edit this book</button></a>
-}
+    <a href="/books/bookpage/@book.Id"><button>View / Edit this book</button></a>
+}*@
 
-<br/>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Number of Copies</th>
+        <th>View / Edit</th>
+    </tr>
+
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Id</td>
+            <td>@book.Author</td>
+            <td>@book.Title</td>
+            <td>@book.Genre</td>
+            <td>@book.NumberOfCopies</td>
+            <td><a href="/books/bookpage/@book.Id"><button>View / Edit</button></a></td>
+        </tr>
+    }
+</table>
+
+<br />
 <a href="/books/new">Create new book</a>

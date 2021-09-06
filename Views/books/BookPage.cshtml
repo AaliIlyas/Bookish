@@ -5,10 +5,23 @@
 <p>Book: @Model.Title, Author: @Model.Author, Genre: @Model.Genre, Number of copies: @Model.NumberOfCopies, Id: @Model.Id</p>
 
 <h2>This book is checked out by: [Empty or List]</h2>
-@foreach(var checkout in Model.CheckedOutBooks)
-            {
-                <p>Name: @checkout.Member.Name, from @checkout.DateLoaned, until @checkout.DateDue</p>
-            }
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Date Loaned</th>
+        <th>Date Due</th>
+    </tr>
+
+    @foreach (var checkout in Model.CheckedOutBooks)
+    {
+        <tr>
+            <td>@checkout.Member.Name</td>
+            <td>@checkout.DateLoaned.ToString("dd/MM/yyyy")</td>
+            <td>@checkout.DateDue.ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
 
 <form method="post" asp-controller="Books" asp-action="SubmitEdit">
     <p>Book title</p>
@@ -29,7 +42,7 @@
 </form>
 
 <form method="post" asp-controller="Books" asp-action="DeleteBook">
-    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden"/>
+    <input asp-for="Id" value="@Model.Id" alt="Id" type="hidden" />
     <br />
     <h4>Delete book? (Warning: permanent)</h4>
     <br />

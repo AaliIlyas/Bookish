@@ -5,10 +5,24 @@
 <p>Member Name: @Model.Name, Address: @Model.Address, Phone Number: @Model.PhoneNumber.ToString(), Id: @Model.Id</p>
 
 <h3>This Member has borrowed the books: [Empty or List]</h3>
-@foreach(var checkout in Model.CheckedOutBooks)
-            {
-                <p>Book name: @checkout.Book.Title by @checkout.Book.Author, from @checkout.DateLoaned until @checkout.DateDue</p>
-            }
+<table>
+    <tr>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Date From</th>
+        <th>Date Due</th>
+    </tr>
+
+    @foreach (var checkout in Model.CheckedOutBooks)
+    {
+        <tr>
+            <td>@checkout.Book.Title</td>
+            <td>@checkout.Book.Author</td>
+            <td>@checkout.DateLoaned</td>
+            <td>@checkout.DateDue</td>
+        </tr>
+    }
+</table>
 
 <form method="post" asp-controller="Members" asp-action="ModifyMember">
     <p>Name</p>
