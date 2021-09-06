@@ -10,7 +10,7 @@ namespace Bookish.Models
         }
 
         public CheckoutViewModel(
-            CheckedOutBookDbModel checkedOutBookDbModel, 
+            CheckedOutBookDbModel checkedOutBookDbModel,
             bool showMember = true,
             bool showBook = true)
         {
@@ -22,9 +22,9 @@ namespace Bookish.Models
             if (showBook)
             {
                 Book = new BookViewModel(checkedOutBookDbModel.Book);
+                Author = Book.Author;
             }
 
-            Author = Book.Author;
             Id = checkedOutBookDbModel.Id;
             DateLoaned = checkedOutBookDbModel.DateLoaned;
             DateDue = checkedOutBookDbModel.DateDue;

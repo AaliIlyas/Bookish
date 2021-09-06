@@ -1,4 +1,5 @@
-﻿using Bookish.DbModels;
+﻿using Microsoft.EntityFrameworkCore;
+using Bookish.DbModels;
 using Bookish.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,10 @@ namespace Bookish.Services
 
         public List<BookViewModel> GenerateBookList()
         {
-            var booksTable = _context.Books.Select(book => new BookViewModel(book)).ToList();
+            var booksTable = _context.Books
+                .Include(b => b.CheckedOutBooks)
+                .Select(book => new BookViewModel(book, false, false))
+                .ToList();
             return booksTable;
         }
 
@@ -64,8 +68,12 @@ namespace Bookish.Services
 
         public BookViewModel GetIndividualBook(int id)
         {
-            var DbBook = _context.Books.Find(id);
-            var book = new BookViewModel(DbBook);
+            var DbBook = _context.Books
+                .Include(book => book.CheckedOutBooks)
+                .ThenInclude(c => c.Member)
+                .Single(b => b.Id == id);
+
+            var book = new BookViewModel(DbBook, true, false);
             return book;
         }
     }

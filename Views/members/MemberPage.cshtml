@@ -4,6 +4,12 @@
 
 <p>Member Name: @Model.Name, Address: @Model.Address, Phone Number: @Model.PhoneNumber.ToString(), Id: @Model.Id</p>
 
+<h3>This Member has borrowed the books: [Empty or List]</h3>
+@foreach(var checkout in Model.CheckedOutBooks)
+            {
+                <p>Book name: @checkout.Book.Title by @checkout.Book.Author, from @checkout.DateLoaned until @checkout.DateDue</p>
+            }
+
 <form method="post" asp-controller="Members" asp-action="ModifyMember">
     <p>Name</p>
     <input type="text" asp-for="Name" alt="Name" required="required">
