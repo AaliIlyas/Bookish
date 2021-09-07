@@ -1,6 +1,6 @@
 namespace Bookish.Models
 {
-    public class NewBookViewModel
+    public class NewBookModel
     {
         public string Author { get; set; }
         public string Title { get; set; }

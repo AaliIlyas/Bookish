@@ -9,7 +9,7 @@ namespace Bookish.Services
     public interface IBookService
     {
         List<BookViewModel> GenerateBookList();
-        void AddNewBook(NewBookViewModel newBookViewModel);
+        void AddNewBook(NewBookModel newBookViewModel);
         public BookViewModel GetIndividualBook(int id);
         public void EditBook(BookViewModel BookViewModel);
         public void DeleteBook(BookViewModel bookViewModel);
@@ -33,7 +33,7 @@ namespace Bookish.Services
             return booksTable;
         }
 
-        public void AddNewBook(NewBookViewModel newBookViewModel)
+        public void AddNewBook(NewBookModel newBookViewModel)
         {
             var newBook = new BookDbModel
             {

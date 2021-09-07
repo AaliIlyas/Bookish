@@ -48,7 +48,7 @@ namespace Bookish.Controllers
         }
 
         [HttpPost]
-        public IActionResult NewCheckout(NewCheckoutViewModel newCheckoutViewModel)
+        public IActionResult NewCheckout(NewCheckoutModel newCheckoutViewModel)
         {
             _checkout.AddNewCheckedOut(newCheckoutViewModel);
             return RedirectToAction(nameof(All));

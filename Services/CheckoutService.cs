@@ -9,7 +9,7 @@ namespace Bookish.Services
     public interface ICheckoutService
     {
         List<CheckoutViewModel> GenerateCheckoutList();
-        void AddNewCheckedOut(NewCheckoutViewModel newCheckoutViewModel);
+        void AddNewCheckedOut(NewCheckoutModel newCheckoutViewModel);
         SingleCheckoutViewModel GetIndividualCheckout(int i);
         void EditIndividualCheckout(SingleCheckoutViewModel singleCheckoutViewModel);
         void DeleteEntry(SingleCheckoutViewModel singleEntry);
@@ -85,7 +85,7 @@ namespace Bookish.Services
             _context.SaveChanges();
         }
 
-        public void AddNewCheckedOut(NewCheckoutViewModel newCheckoutViewModel)
+        public void AddNewCheckedOut(NewCheckoutModel newCheckoutViewModel)
         {
             var member = _context.Members.Where(member => member.Name == newCheckoutViewModel.MemberName).First();
             var book = _context.Books.Where(book => book.Title == newCheckoutViewModel.BookName).First();

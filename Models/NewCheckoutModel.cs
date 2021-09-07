@@ -2,7 +2,7 @@
 
 namespace Bookish.Models
 {
-    public class NewCheckoutViewModel
+    public class NewCheckoutModel
     {
         public string MemberName { get; set; }
         public string BookName { get; set; }

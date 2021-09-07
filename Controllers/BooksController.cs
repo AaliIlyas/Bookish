@@ -48,7 +48,7 @@ namespace Bookish.Controllers
         }
 
         [HttpPost]
-        public IActionResult Submit(NewBookViewModel newBookViewModel)
+        public IActionResult Submit(NewBookModel newBookViewModel)
         {
             _bookService.AddNewBook(newBookViewModel);
             return RedirectToAction(nameof(All));
