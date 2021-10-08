@@ -16,3 +16,5 @@ Now run `dotnet ef migrations add BookDbContext`
 Finally, run `dotnet ef database update`.
 
 You can open this solution is Visual Studio and run it.
+
+**README work in progress**
