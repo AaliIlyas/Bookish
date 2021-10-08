@@ -2,19 +2,42 @@
 
 Welcome to Bookish. This is a basic application to manage a library. In this you can add, remove and modify books and members. You can also checkout books and return them.
 
-## Setup
-
+### Prerequisites
 You will need to have MSSQL installed. You can download it [here](https://www.microsoft.com/en-gb/sql-server/sql-server-downloads?rtc=1).
 
+You will also need docker installed. You can download this from [here](https://www.docker.com/products/docker-desktop).
+
+### Setup
+
 Open an Admin command line.
-Run `docker-compose up`
+Go to the project directory.
 
-Run this command in the project directory: `dotnet tool install --global dotnet-ef`.
+Run `docker build -t bookish .`
 
-Now run `dotnet ef migrations add BookDbContext`
+Then `docker-compose up`.
+
+Now we can set up the database.
+
+Run `dotnet tool install --global dotnet-ef`.
+
+Then `dotnet ef migrations add LibraryDb`.
 
 Finally, run `dotnet ef database update`.
 
-You can open this solution is Visual Studio and run it.
+You can open the solution file in Visual Studio and run it.
 
-**README work in progress**
+### To connect to this database with Sequel Server Management Studio
+
+Use SQL Server Authentication.
+
+Server name: `localhost,1433`
+Login: `SA`
+Password: `Password123`
+
+If you cannot use this port you can change it from 1433 inside of the docker-compose.yml. Note that you will have to also change it inside of Startup.cs.
+
+---
+
+This is my rudimentary application using the ASP.NET MVC. I really enjoyed building this and I am looking forward to continue improving my skill set in this. Thanks for visiting.
+
+Ilyas
