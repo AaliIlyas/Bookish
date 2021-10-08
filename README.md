@@ -7,7 +7,9 @@ Welcome to Bookish. This is a basic application to manage a library. In this you
 You will need to have MSSQL installed. You can download it [here](https://www.microsoft.com/en-gb/sql-server/sql-server-downloads?rtc=1).
 
 Open an Admin command line.
-First run this command in the project directory: `dotnet tool install --global dotnet-ef`.
+Run `docker-compose up`
+
+Run this command in the project directory: `dotnet tool install --global dotnet-ef`.
 
 Now run `dotnet ef migrations add BookDbContext`
 
