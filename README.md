@@ -9,8 +9,6 @@ You will need to have MSSQL installed. You can download it [here](https://www.mi
 Open an Admin command line.
 First run this command in the project directory: `dotnet tool install --global dotnet-ef`.
 
-Then run `dotnet tool install --global dotnet-ef`.
-
 Now run `dotnet ef migrations add BookDbContext`
 
 Finally, run `dotnet ef database update`.
