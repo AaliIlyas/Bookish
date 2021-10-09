@@ -29,9 +29,3 @@ Use SQL Server Authentication.
 Server name: `localhost,1433`
 Login: `SA`
 Password: `Password123`
-
----
-
-This is my rudimentary application using the ASP.NET MVC. I really enjoyed building this and I am looking forward to continue improving my skill set in this. Thanks for visiting.
-
-Ilyas
