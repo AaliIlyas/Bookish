@@ -1,28 +1,24 @@
 # Bookish #
 
-Welcome to Bookish. This is a basic application to manage a library. In this you can add, remove and modify books and members. You can also checkout books and return them.
+Welcome to Bookish. This is a basic application to manage a library. In this you can add, remove and modify books and members. You can also checkout books and return them from members.
 
 ### Prerequisites
-You will need to have MSSQL installed. You can download it [here](https://www.microsoft.com/en-gb/sql-server/sql-server-downloads?rtc=1).
-
-You will also need docker installed. You can download this from [here](https://www.docker.com/products/docker-desktop).
+- You will need to have MSSQL installed. You can download it [here](https://www.microsoft.com/en-gb/sql-server/sql-server-downloads?rtc=1).
+- You will also need docker installed. You can download this from [here](https://www.docker.com/products/docker-desktop).
 
 ### Setup
 
-Open an Admin command line.
-Go to the project directory.
+Open an admin command line and navigate to the project directory.
 
-Run `docker build -t bookish .`
-
-Then `docker-compose up`.
+run:
+- `docker-compose up`
 
 Now we can set up the database.
 
-Run `dotnet tool install --global dotnet-ef`.
-
-Then `dotnet ef migrations add LibraryDb`.
-
-Finally, run `dotnet ef database update`.
+run:
+- `dotnet tool install --global dotnet-ef`
+- `dotnet ef migrations add LibraryDb`
+- `dotnet ef database update`
 
 You can open the solution file in Visual Studio and run it.
 
@@ -33,8 +29,6 @@ Use SQL Server Authentication.
 Server name: `localhost,1433`
 Login: `SA`
 Password: `Password123`
-
-If you cannot use this port you can change it from 1433 inside of the docker-compose.yml. Note that you will have to also change it inside of Startup.cs.
 
 ---
 
