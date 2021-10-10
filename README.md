@@ -2,6 +2,8 @@
 
 Welcome to Bookish. This is a basic application to manage a library. In this you can add, remove and modify books and members. You can also checkout books and return them from members.
 
+ASP.NET MVC, MSSQL, EF Core, DB Migrations, Dependency Injection.
+
 ### Prerequisites
 - You will need to have MSSQL installed. You can download it [here](https://www.microsoft.com/en-gb/sql-server/sql-server-downloads?rtc=1).
 - You will also need docker installed. You can download this from [here](https://www.docker.com/products/docker-desktop).
