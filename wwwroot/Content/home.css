@@ -1,0 +1,17 @@
+﻿/*.home-container {
+    display: inline-flex;
+    justify-content: space-between;
+}*/
+
+.subheadings {
+    height: 7%;
+}
+
+/*.welcome {
+    width: 100%;
+    color: black;
+}*/
+
+.jumbotron {
+    height: 100%;
+}

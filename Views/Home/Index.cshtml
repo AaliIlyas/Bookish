@@ -1,13 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link href="~/Content/home.css" rel="stylesheet" type="text/css" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Bookish</h1>
+<h1 class="display-4 welcome text-center">Welcome to Bookish</h1>
 
-    <a href="/Books/All">Go to Books</a>
-    <br/>
-    <a href="/Members/All">Go to Members</a>
-    <br/>
-    <a href="/Checkout/All">Go to Checkout</a>
+<p>
+    This is a library management software. Here you can add new members or books and check out a book to a member.
+</p>
+
+<div class="container">
+    <div class="subheadings bg-white border-bottom box-shadow mb-3 jumbotron text-center">
+        <a href="/Books/All">Go to Books</a>
+    </div>
+    <br />
+    <div class="bg-white border-bottom box-shadow mb-3 jumbotron text-center">
+        <a class="subheadings" href="/Members/All">Go to Members</a>
+    </div>
+    <br />
+    <div class="subheadings bg-white border-bottom box-shadow mb-3 jumbotron text-center">
+        <a class="subheadings" href="/Checkout/All">Go to Checkout</a>
+    </div>
 </div>

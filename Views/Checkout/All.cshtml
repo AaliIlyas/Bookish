@@ -1,63 +1,80 @@
 ﻿@model IList<CheckoutViewModel>;
 @{
     var booksOnLoan = Model.Where(checkout => !checkout.DateReturned.HasValue);
+    var pastBooks = Model.Where(c => c.DateReturned.HasValue);
 }
 
-<h1>History of books on loan</h1>
-
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Member Name</th>
-        <th>Date Loaned</th>
-        <th>Date to return</th>
-        <th>Returned on Date</th>
-        <th>View / Edit</th>
-    </tr>
-
-    @foreach (var checkout in Model)
-    {
-        var returnDate = (@checkout.DateReturned == null) ? "Unreturned" : checkout.DateReturned?.ToString("dd/MM/yyyy");
-
-        <tr>
-            <td>@checkout.Book.Title</td>
-            <td>@checkout.Book.Author</td>
-            <td>@checkout.Member.Name</td>
-            <td>@checkout.DateLoaned.ToString("dd/MM/yyyy")</td>
-            <td>@checkout.DateDue.ToString("dd/MM/yyyy")</td>
-            <td>@returnDate</td>
-            <td><a href="/checkout/borrow/@checkout.Id"><button>View / Edit</button></a></td>
-        </tr>
-    }
-</table>
-
 <h2> Books currently on loan </h2>
-
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Member Name</th>
-        <th>Date Loaned</th>
-        <th>Date to return</th>
-        <th>View / Edit</th>
-    </tr>
-
-    @foreach (var checkout in booksOnLoan)
+@{
+    if (booksOnLoan.Count() == 0)
     {
-        var returnDate = (@checkout.DateReturned == null) ? "Unreturned" : checkout.DateReturned?.ToString("dd/MM/yyyy");
-
-        <tr>
-            <td>@checkout.Book.Title</td>
-            <td>@checkout.Book.Author</td>
-            <td>@checkout.Member.Name</td>
-            <td>@checkout.DateLoaned.ToString("dd/MM/yyyy")</td>
-            <td>@checkout.DateDue.ToString("dd/MM/yyyy")</td>
-            <td><a href="/checkout/borrow/@checkout.Id"><button>View / Edit</button></a></td>
-        </tr>
+        <p>No books on loan right now.</p>
     }
-</table>
+    else
+    {
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Member Name</th>
+                <th>Date Loaned</th>
+                <th>Date to return</th>
+                <th>View / Edit</th>
+            </tr>
+
+            @foreach (var checkout in booksOnLoan)
+            {
+                var returnDate = (@checkout.DateReturned == null) ? "Unreturned" : checkout.DateReturned?.ToString("dd/MM/yyyy");
+
+                <tr>
+                    <td>@checkout.Book.Title</td>
+                    <td>@checkout.Book.Author</td>
+                    <td>@checkout.Member.Name</td>
+                    <td>@checkout.DateLoaned.ToString("dd/MM/yyyy")</td>
+                    <td>@checkout.DateDue.ToString("dd/MM/yyyy")</td>
+                    <td><a href="/checkout/borrow/@checkout.Id"><button>View / Edit</button></a></td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+<h2>Books loaned in the past</h2>
+@{
+    if (pastBooks.Count() == 0)
+    {
+        <p>Empty.</p>
+    }
+    else
+    {
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Member Name</th>
+                <th>Date Loaned</th>
+                <th>Date to return</th>
+                <th>Returned on Date</th>
+                <th>View / Edit</th>
+            </tr>
+
+            @foreach (var checkout in Model)
+            {
+                var returnDate = (@checkout.DateReturned == null) ? "Unreturned" : checkout.DateReturned?.ToString("dd/MM/yyyy");
+
+                <tr>
+                    <td>@checkout.Book.Title</td>
+                    <td>@checkout.Book.Author</td>
+                    <td>@checkout.Member.Name</td>
+                    <td>@checkout.DateLoaned.ToString("dd/MM/yyyy")</td>
+                    <td>@checkout.DateDue.ToString("dd/MM/yyyy")</td>
+                    <td>@returnDate</td>
+                    <td><a href="/checkout/borrow/@checkout.Id"><button>View / Edit</button></a></td>
+                </tr>
+            }
+        </table>
+    }
+}
 
 <br />
 <a href="/checkout/new">Checkout a new book</a>
